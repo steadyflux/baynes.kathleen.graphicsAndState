@@ -1,0 +1,57 @@
+Title 	HW6: Graphics and State
+Due 	Nov 7, 2011 6:00 pm
+Status 	Not Started
+Grade Scale 	Points (max 4.0)
+Modified by instructor 	Nov 1, 2011 9:50 pm
+Instructions
+
+On to a fun application!
+
+For this assignment, you'll display and animate graphics for our "Rube Goldberg" game.
+
+Eventually, each phone will send events for other phones to process, changing the state of the gadget on that phone and in turn firing off other events for other phones to interact with. The end goal: make Christmas Tree lights (on a phone screen... maybe some other term we'll set up an Arduino to make some real lights blink...)
+
+Let's start with our event definition. Everyone should define an enumeration that looks as follows:
+
+     public enum Event {
+          Heat, Water, Start, Pulse, 
+          ElectricOn, ElectricOff, Clap, 
+          Alex, Turn, Steam, Pull, Release;
+     }
+
+You can put this enum in your package. It defines all of the events we'll eventually be using.
+
+For this assignment, you'll only need to use all except: Start, Clap, Turn, Pull and Release.    
+
+First, draw state diagrams for the following three gadgets:
+
+    Christmas Tree
+        states: unlit, lit, wet, burning, fried
+        responds to: Heat, Water, ElectricOn, ElectricOff
+    Clapping Monkey
+        states: bored, wet, wet clapping wide, wet clapping closed, clapping wide, clapping closed, burning, ashes
+        responds to: Heat, Water, Alex (Alex Trebek makes him want to clap)
+    Pinwheel
+         states: stopped, turning
+        responds to: Steam (makes it turn), Pulse (makes it stop turning)
+
+All you need to do in these state diagrams is determine the next state.
+
+Next, create a View for each of the three components. These views should define the possible states for their component, map those states to the images (see attached below), and define the transitions between those states.
+
+These views should have a method like changeState(Event e) that will change the current state based on the event, and then change the image in the view. (The name of this method is not important, but I would recommend defining an interface or common superclass that defines the method to make it easy to call without worrying which view is currently displayed)
+
+Create an activity that does the following:
+
+    Displays a button at the top for each event in the Event enumeration. When a button is pressed, it calls changeState() on the currently-displayed gadget view, passing the Event that it represents.
+    Displays a Spinner with three values: Christmas Tree, Clapping Monkey and Pinwheel. When the user selects one, the corresponding view is displayed. (I'd recommend having a FrameLayout in your XML that acts as a placeholder for the gadget view. You can then call addView on it to add the gadget view, and call dispose() on the gadget view you want to remove. (Another option would be to add all three gadget views to a linear layout and call setVisibility on them to change which one is visible - passing View.GONE omits it from the layout, and View.VISIBLE makes it visible. Note that after changing the visibility, you need to call refreshLayout() on the parent viewgroup to see the changes.)
+    Displays the name of the current state that the gadget is in (in a TextView). You can get the name of the state by calling state.name() on the State enumeration value.
+
+Your Christmas Tree and Clapping Monkey gadgets do not perform any animation. The pinwheel should spin once when it receives a Steam event. See the example I wrote in class with the spinning pinwheel. You should have it fill the view and give the view a white background so the white square around the image isn't noticeable.
+
+It is up to you to choose how you would like to store the state transition table. I recommend a structure like
+
+    Map<State, Map<Event, State>>
+
+where the outer map is keyed by the current state and the inner map is keyed by the event you want to lookup. There are many other ways to manage a state table, though.
+
