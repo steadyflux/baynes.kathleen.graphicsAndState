@@ -29,6 +29,8 @@ public class Pinwheel extends Sprite {
 	  super(context);
 	  currentState = State.Stopped;
 	  
+	  drawables.put(State.Unlit, context.getResources().getDrawable(R.drawable.pinwheel));
+	  
 	  addTransition(State.Stopped, Event.Steam, State.Turning);
 	  addTransition(State.Turning, Event.Pulse, State.Stopped);
   }

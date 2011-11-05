@@ -17,9 +17,9 @@ public class Monkey extends Sprite {
 		super(context);
 		currentState = State.Bored;
 		
-		drawables.put(State.Bored, context.getResources().getDrawable(R.drawable.monkey_bored));
 		drawables.put(State.Wet, context.getResources().getDrawable(R.drawable.monkey_wet));
 		drawables.put(State.Burning, context.getResources().getDrawable(R.drawable.monkey_burning));
+		drawables.put(State.Bored, context.getResources().getDrawable(R.drawable.monkey_bored));
 		drawables.put(State.Ashes, context.getResources().getDrawable(R.drawable.monkey_ashes));
 		drawables.put(State.ClappingWide, context.getResources().getDrawable(R.drawable.monkey_clapping_wide));
 		drawables.put(State.ClappingClosed, context.getResources().getDrawable(R.drawable.monkey_clapping_closed));

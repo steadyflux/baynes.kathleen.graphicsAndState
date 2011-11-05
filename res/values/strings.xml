@@ -3,5 +3,16 @@
 
     <string name="hello">Hello World, graphicsAndStateActivity!</string>
     <string name="app_name">baynes.kathleen.graphicsAndState</string>
+    <string name="water">Water</string>
+    <string name="heat">Heat</string>
+    <string name="pulse">Pulse</string>
+    <string name="alex">Alex</string>
+    <string name="steam">Steam</string>
+    <string name="electric">Electricity</string>
+    <string-array name="sprite_list">
+        <item>Christmas Tree</item>
+        <item>Clapping Monkey</item>
+        <item>Pinwheel</item>
+    </string-array>
 
 </resources>
