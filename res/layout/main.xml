@@ -15,56 +15,61 @@
             android:id="@+id/water_button"
             android:layout_width="50sp"
             android:layout_height="wrap_content"
-            android:text="@string/water" android:textSize='10sp'/>
+            android:text="@string/water"
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/heat_button"
             android:layout_width="50sp"
             android:layout_height="wrap_content"
-            android:text="@string/heat" android:textSize='10sp'/>
+            android:text="@string/heat"
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/pulse_button"
             android:layout_width="50sp"
             android:layout_height="wrap_content"
-            android:text="@string/pulse" android:textSize='10sp'/>
+            android:text="@string/pulse"
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/steam_button"
             android:layout_width="50sp"
             android:layout_height="wrap_content"
-            android:text="@string/steam" android:textSize='10sp'/>
+            android:text="@string/steam"
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/electric_button"
             android:layout_width="70sp"
             android:layout_height="wrap_content"
-            android:text="@string/electric" android:textSize='10sp'/>
-        
+            android:text="@string/electric"
+            android:textSize="10sp" />
+
         <Button
             android:id="@+id/alex_button"
             android:layout_width="50sp"
             android:layout_height="wrap_content"
-            android:text="@string/alex" android:textSize="10sp"/>
+            android:text="@string/alex"
+            android:textSize="10sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/spinner_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:orientation="vertical" >
 
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight="1" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
-	<ImageView 
-        android:id="@+id/image"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-	    />
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="380sp">
+    </FrameLayout>
+
 </LinearLayout>

@@ -4,39 +4,42 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.view.View;
+import android.util.Log;
+import android.widget.ImageView;
 
-public abstract class Sprite extends View {
+public class TransitioningRube extends ImageView implements RubeItem {
 
+	/** Used in logging */
+	protected static final String TAG = "baynes.kathleen.graphics";
+	
 	protected State currentState;
 	protected Map<State, Drawable> drawables = new HashMap<State, Drawable>();
 	protected Map<State, Map<Event, State>> transitions = new HashMap<State, Map<Event, State>>();
-
+	
 	/**
 	 * @param context
 	 * @param attrs
 	 * @param defStyle
 	 */
-	public Sprite(Context context, AttributeSet attrs, int defStyle) {
+	public TransitioningRube(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * @param context
 	 * @param attrs
 	 */
-	public Sprite(Context context, AttributeSet attrs) {
+	public TransitioningRube(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * @param context
 	 */
-	public Sprite(Context context) {
+	public TransitioningRube(Context context) {
 		super(context);
 	}
 
@@ -53,4 +56,11 @@ public abstract class Sprite extends View {
 			}
 		}
 	}
+  
+	@Override protected void onDraw(Canvas canvas) {
+		Log.d(TAG, "a transitioning rube is drawn");
+		Log.d(TAG, "current state: " + currentState.toString());
+		this.setImageDrawable(drawables.get(currentState));
+		super.onDraw(canvas);
+	}	
 }

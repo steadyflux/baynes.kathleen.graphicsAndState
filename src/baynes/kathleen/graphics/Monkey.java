@@ -1,17 +1,7 @@
 package baynes.kathleen.graphics;
-
 import android.content.Context;
-import android.util.AttributeSet;
 
-public class Monkey extends Sprite {
-
-	public Monkey(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-	}
-
-	public Monkey(Context context, AttributeSet attrs) {
-		super(context, attrs);
-	}
+public class Monkey extends TransitioningRube {
 
 	public Monkey(Context context) {
 		super(context);
@@ -25,7 +15,7 @@ public class Monkey extends Sprite {
 		drawables.put(State.ClappingClosed, context.getResources().getDrawable(R.drawable.monkey_clapping_closed));
 		drawables.put(State.WetClappingWide, context.getResources().getDrawable(R.drawable.monkey_wet_clapping_wide));
 		drawables.put(State.WetClappingClosed, context.getResources().getDrawable(R.drawable.monkey_wet_clapping_closed));
-		
+
 		addTransition(State.Bored, Event.Alex, State.ClappingWide);
 		addTransition(State.Bored, Event.Water, State.Wet);
 		addTransition(State.Bored, Event.Heat, State.Burning);
@@ -49,6 +39,7 @@ public class Monkey extends Sprite {
 		
 		addTransition(State.WetClappingWide, Event.Alex, State.WetClappingClosed);
 		addTransition(State.WetClappingWide, Event.Heat, State.ClappingWide);
-		
+
+		this.setImageResource(R.drawable.monkey_bored);
 	}
 }

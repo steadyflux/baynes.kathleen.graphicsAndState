@@ -2,18 +2,22 @@ package baynes.kathleen.graphics;
 
 import baynes.kathleen.graphics.R;
 import android.app.Activity;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class GraphicsAndStateActivity extends Activity {
-	/** Called when the activity is first created. */
+	
+		
+	protected static final String TAG = "baynes.kathleen.graphics";
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,7 +34,32 @@ public class GraphicsAndStateActivity extends Activity {
 
 			@Override
       public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-	      
+				CharSequence spinnerChoice = ((TextView)selectedItemView).getText();
+				Log.d(TAG, "spinner item selected: " + spinnerChoice);
+				
+				FrameLayout frame = ((FrameLayout)findViewById(R.id.frame));
+				frame.removeAllViews();
+				
+				View toAdd = null;
+				
+				if ("Clapping Monkey".contentEquals(spinnerChoice)) {
+					Log.d(TAG, "ooh a monkey!");
+					toAdd = new Monkey(getBaseContext());
+				}
+				else if ("Christmas Tree".contentEquals(spinnerChoice)) {
+					Log.d(TAG, "pretty tree ....");
+					toAdd = new Tree(getBaseContext());
+				}
+				else if ("Pinwheel".contentEquals(spinnerChoice)) {
+					Log.d(TAG, "pinwheel");
+					toAdd = new Pinwheel(getBaseContext());
+				}
+				else {
+					Log.d(TAG, "NOTHING! ABSOLUTELY NOTHING!");
+				}
+
+				frame.addView(toAdd);
+				frame.invalidate();
       }
 
 			@Override
@@ -39,13 +68,7 @@ public class GraphicsAndStateActivity extends Activity {
       }
 		});
 
-		Drawable[] layers = { getResources().getDrawable(R.drawable.monkey_bored),
-		    getResources().getDrawable(R.drawable.monkey_ashes) };
-		TransitionDrawable transitionDrawable = new TransitionDrawable(layers);
-		transitionDrawable.setCrossFadeEnabled(true);
-		((ImageView) findViewById(R.id.image)).setImageDrawable(transitionDrawable);
-		transitionDrawable.setBounds(0, 0, transitionDrawable.getIntrinsicWidth(), transitionDrawable.getIntrinsicHeight());
-		transitionDrawable.startTransition(5000);
-
+		FrameLayout frameLayout = ((FrameLayout)findViewById(R.id.frame));
+		frameLayout.setBackgroundColor(Color.WHITE);
 	}
 }

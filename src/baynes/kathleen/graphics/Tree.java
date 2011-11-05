@@ -1,26 +1,8 @@
 package baynes.kathleen.graphics;
 
 import android.content.Context;
-import android.util.AttributeSet;
 
-public class Tree extends Sprite {
-
-	/**
-   * @param context
-   * @param attrs
-   * @param defStyle
-   */
-  public Tree(Context context, AttributeSet attrs, int defStyle) {
-	  super(context, attrs, defStyle);
-  }
-
-	/**
-   * @param context
-   * @param attrs
-   */
-  public Tree(Context context, AttributeSet attrs) {
-	  super(context, attrs);
-  }
+public class Tree extends TransitioningRube {
 
 	/**
    * @param context
@@ -48,5 +30,8 @@ public class Tree extends Sprite {
 		addTransition(State.Lit, Event.ElectricOff, State.Unlit);
 		addTransition(State.Lit, Event.Heat, State.Burning);
 		addTransition(State.Lit, Event.Water, State.Fried);
+		
+		this.setImageResource(R.drawable.tree_unlit);
   }
+  
 }
