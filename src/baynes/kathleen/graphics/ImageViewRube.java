@@ -6,11 +6,11 @@ import java.util.Map;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
-public class TransitioningRube extends ImageView implements RubeItem {
+public class ImageViewRube extends ImageView implements RubeItem {
 
 	/** Used in logging */
 	protected static final String TAG = "baynes.kathleen.graphics";
@@ -18,28 +18,11 @@ public class TransitioningRube extends ImageView implements RubeItem {
 	protected State currentState;
 	protected Map<State, Drawable> drawables = new HashMap<State, Drawable>();
 	protected Map<State, Map<Event, State>> transitions = new HashMap<State, Map<Event, State>>();
-	
-	/**
-	 * @param context
-	 * @param attrs
-	 * @param defStyle
-	 */
-	public TransitioningRube(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-	}
-
-	/**
-	 * @param context
-	 * @param attrs
-	 */
-	public TransitioningRube(Context context, AttributeSet attrs) {
-		super(context, attrs);
-	}
 
 	/**
 	 * @param context
 	 */
-	public TransitioningRube(Context context) {
+	public ImageViewRube(Context context) {
 		super(context);
 	}
 
@@ -47,14 +30,18 @@ public class TransitioningRube extends ImageView implements RubeItem {
 		Map<Event, State> transitionMap = (transitions.get(currentState) == null) ? new HashMap<Event, State>()
 		    : transitions.get(currentState);
 		transitionMap.put(event, nextState);
+		transitions.put(currentState, transitionMap);
 	}
 
-	public void getNextState(Event event) {
+	public View getNextStateView(Event event) {
+		Log.d(TAG, "getNextStateView: Total number of transitions for " + getItemName() + " = " + transitions.size());
 		if (transitions.get(currentState) != null) {
 			if (transitions.get(currentState).get(event) != null) {
 				currentState = transitions.get(currentState).get(event);
 			}
 		}
+		this.setImageDrawable(drawables.get(currentState));
+		return this;
 	}
   
 	@Override protected void onDraw(Canvas canvas) {
@@ -62,5 +49,15 @@ public class TransitioningRube extends ImageView implements RubeItem {
 		Log.d(TAG, "current state: " + currentState.toString());
 		this.setImageDrawable(drawables.get(currentState));
 		super.onDraw(canvas);
-	}	
+	}
+
+	@Override
+  public String getItemName() {
+	  return "ImageViewRube";
+  }
+
+	@Override
+  public CharSequence getCurrentState() {
+	  return currentState.toString();
+  }
 }

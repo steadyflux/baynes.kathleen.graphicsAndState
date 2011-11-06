@@ -1,7 +1,7 @@
 package baynes.kathleen.graphics;
 import android.content.Context;
 
-public class Monkey extends TransitioningRube {
+public class Monkey extends ImageViewRube {
 
 	public Monkey(Context context) {
 		super(context);
@@ -40,6 +40,12 @@ public class Monkey extends TransitioningRube {
 		addTransition(State.WetClappingWide, Event.Alex, State.WetClappingClosed);
 		addTransition(State.WetClappingWide, Event.Heat, State.ClappingWide);
 
+		this.setScaleType(ScaleType.CENTER);
 		this.setImageResource(R.drawable.monkey_bored);
 	}
+	
+	@Override
+  public String getItemName() {
+	  return "Monkey";
+  }
 }

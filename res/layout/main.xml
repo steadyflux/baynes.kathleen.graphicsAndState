@@ -10,48 +10,56 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
-
+        
         <Button
             android:id="@+id/water_button"
-            android:layout_width="50sp"
+            android:layout_width="45sp"
             android:layout_height="wrap_content"
             android:text="@string/water"
-            android:textSize="10sp" />
+            android:textSize="8sp" />
 
         <Button
             android:id="@+id/heat_button"
-            android:layout_width="50sp"
+            android:layout_width="45sp"
             android:layout_height="wrap_content"
             android:text="@string/heat"
-            android:textSize="10sp" />
+            android:textSize="8sp" />
 
         <Button
             android:id="@+id/pulse_button"
-            android:layout_width="50sp"
+            android:layout_width="45sp"
             android:layout_height="wrap_content"
             android:text="@string/pulse"
-            android:textSize="10sp" />
+            android:textSize="8sp" />
 
         <Button
-            android:id="@+id/steam_button"
+            android:id="@+id/electric_on_button"
             android:layout_width="50sp"
             android:layout_height="wrap_content"
-            android:text="@string/steam"
-            android:textSize="10sp" />
+            android:text="@string/electric_on"
+            android:textSize="6sp" />
 
         <Button
-            android:id="@+id/electric_button"
-            android:layout_width="70sp"
+            android:id="@+id/electric_off_button"
+            android:layout_width="50sp"
             android:layout_height="wrap_content"
-            android:text="@string/electric"
-            android:textSize="10sp" />
+            android:text="@string/electric_off"
+            android:textSize="6sp" />
 
         <Button
             android:id="@+id/alex_button"
-            android:layout_width="50sp"
+            android:layout_width="45sp"
             android:layout_height="wrap_content"
             android:text="@string/alex"
-            android:textSize="10sp" />
+            android:textSize="8sp" />
+
+        <Button
+            android:id="@+id/steam_button"
+            android:layout_width="45sp"
+            android:layout_height="wrap_content"
+            android:text="@string/steam"
+            android:textSize="8sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -69,7 +77,22 @@
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
-        android:layout_height="380sp">
+        android:layout_height="360sp" >
+
     </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/state_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/current_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
 
 </LinearLayout>

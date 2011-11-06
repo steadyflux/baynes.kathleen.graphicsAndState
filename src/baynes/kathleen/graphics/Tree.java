@@ -2,7 +2,7 @@ package baynes.kathleen.graphics;
 
 import android.content.Context;
 
-public class Tree extends TransitioningRube {
+public class Tree extends ImageViewRube {
 
 	/**
    * @param context
@@ -31,7 +31,12 @@ public class Tree extends TransitioningRube {
 		addTransition(State.Lit, Event.Heat, State.Burning);
 		addTransition(State.Lit, Event.Water, State.Fried);
 		
+		this.setScaleType(ScaleType.CENTER);
 		this.setImageResource(R.drawable.tree_unlit);
   }
   
+  @Override
+  public String getItemName() {
+	  return "Tree";
+  }
 }

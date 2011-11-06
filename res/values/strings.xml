@@ -8,7 +8,8 @@
     <string name="pulse">Pulse</string>
     <string name="alex">Alex</string>
     <string name="steam">Steam</string>
-    <string name="electric">Electricity</string>
+    <string name="electric_on">Elect. On</string>
+    <string name="electric_off">Elect. Off</string>
     <string-array name="sprite_list">
         <item>Christmas Tree</item>
         <item>Clapping Monkey</item>

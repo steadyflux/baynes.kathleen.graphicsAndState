@@ -1,6 +1,11 @@
 package baynes.kathleen.graphics;
 
+import android.view.View;
+
 public interface RubeItem {
-	public void addTransition(State currentState, Event event, State nextState);
-	public void getNextState(Event event);
+	
+	public String getItemName();
+	public CharSequence getCurrentState();
+	
+	public View getNextStateView(Event event);
 }

@@ -6,16 +6,17 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 public class GraphicsAndStateActivity extends Activity {
 	
-		
 	protected static final String TAG = "baynes.kathleen.graphics";
 	
 	@Override
@@ -23,7 +24,37 @@ public class GraphicsAndStateActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sprite_list,
+		FrameLayout frameLayout = ((FrameLayout)findViewById(R.id.frame));
+		frameLayout.setBackgroundColor(Color.WHITE);
+		
+		setupRubeSelector();
+
+		setUpButton(R.id.water_button, Event.Water);
+		setUpButton(R.id.heat_button, Event.Heat);
+		setUpButton(R.id.pulse_button, Event.Pulse);
+		setUpButton(R.id.steam_button, Event.Steam);
+		setUpButton(R.id.alex_button, Event.Alex);
+		setUpButton(R.id.electric_on_button, Event.ElectricOn);
+		setUpButton(R.id.electric_off_button, Event.ElectricOff);
+	}
+
+	private void setUpButton(int button_id, final Event associatedEvent) {
+	  Button button = (Button) findViewById(button_id);
+	  button.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FrameLayout frame = ((FrameLayout)findViewById(R.id.frame));
+				View updatedView = ((RubeItem)frame.getChildAt(0)).getNextStateView(associatedEvent);
+				clearFrame(frame);
+				frame.addView(updatedView);
+				((TextView) findViewById(R.id.current_state)).setText(((RubeItem) updatedView).getCurrentState());
+				frame.invalidate();
+			}
+		});
+  }
+
+	private void setupRubeSelector() {
+	  ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sprite_list,
 		    android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -38,7 +69,7 @@ public class GraphicsAndStateActivity extends Activity {
 				Log.d(TAG, "spinner item selected: " + spinnerChoice);
 				
 				FrameLayout frame = ((FrameLayout)findViewById(R.id.frame));
-				frame.removeAllViews();
+				clearFrame(frame);
 				
 				View toAdd = null;
 				
@@ -60,6 +91,8 @@ public class GraphicsAndStateActivity extends Activity {
 
 				frame.addView(toAdd);
 				frame.invalidate();
+				
+				((TextView) findViewById(R.id.current_state)).setText(((RubeItem) toAdd).getCurrentState());
       }
 
 			@Override
@@ -67,8 +100,15 @@ public class GraphicsAndStateActivity extends Activity {
 	      return;
       }
 		});
-
-		FrameLayout frameLayout = ((FrameLayout)findViewById(R.id.frame));
-		frameLayout.setBackgroundColor(Color.WHITE);
-	}
+  }
+	
+	public static void clearFrame(FrameLayout frame) {
+    if (frame.getChildCount() > 0) {
+			for (int i = 0; i < frame.getChildCount(); i++) {
+				View currentView = frame.getChildAt(i);
+				currentView.clearAnimation(); 
+				frame.removeViewInLayout(currentView);
+      }
+		}
+  }
 }
