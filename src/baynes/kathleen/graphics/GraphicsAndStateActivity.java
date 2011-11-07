@@ -58,11 +58,18 @@ public class GraphicsAndStateActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				FrameLayout frame = ((FrameLayout)findViewById(R.id.frame));
-				View updatedView = ((RubeItem)frame.getChildAt(0)).getNextStateView(associatedEvent);
-				clearFrame(frame);
-				frame.addView(updatedView);
-				((TextView) findViewById(R.id.current_state)).setText(((RubeItem) updatedView).getCurrentState());
-				frame.invalidate();
+				RubeItem currentView = ((RubeItem)frame.getChildAt(0));
+				CharSequence oldState = currentView.getCurrentState();
+				View updatedView = currentView.getNextStateView(associatedEvent);
+				
+				//only clear the frame and update if the state has changed
+				if (oldState != (((RubeItem) updatedView).getCurrentState())) {
+					clearFrame(frame);
+					frame.addView(updatedView);
+					((TextView) findViewById(R.id.current_state)).setText(((RubeItem) updatedView).getCurrentState());
+					frame.invalidate();
+				}
+				
 			}
 		});
   }
