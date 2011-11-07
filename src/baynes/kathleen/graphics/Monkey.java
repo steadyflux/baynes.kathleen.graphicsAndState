@@ -1,8 +1,16 @@
 package baynes.kathleen.graphics;
 import android.content.Context;
 
+/**
+ * The Class Monkey.
+ */
 public class Monkey extends ImageViewRube {
 
+	/**
+	 * Instantiates a new monkey, setting up initial state, drawable hash and state machine.
+	 *
+	 * @param context the context
+	 */
 	public Monkey(Context context) {
 		super(context);
 		currentState = State.Bored;
@@ -44,6 +52,10 @@ public class Monkey extends ImageViewRube {
 		this.setImageResource(R.drawable.monkey_bored);
 	}
 	
+	/**
+	 * returns "Monkey"
+	 * @see baynes.kathleen.graphics.ImageViewRube#getItemName()
+	 */
 	@Override
   public String getItemName() {
 	  return "Monkey";

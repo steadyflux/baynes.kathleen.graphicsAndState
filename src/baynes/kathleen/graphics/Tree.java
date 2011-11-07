@@ -2,11 +2,16 @@ package baynes.kathleen.graphics;
 
 import android.content.Context;
 
+/**
+ * The Class Tree.
+ */
 public class Tree extends ImageViewRube {
 
 	/**
-   * @param context
-   */
+	 * Instantiates a new tree, setting up initial state, drawable hash and state machine.
+	 *
+	 * @param context the context
+	 */
   public Tree(Context context) {
 	  super(context);
 		currentState = State.Unlit;
@@ -35,6 +40,10 @@ public class Tree extends ImageViewRube {
 		this.setImageResource(R.drawable.tree_unlit);
   }
   
+  /**
+   * returns "Tree"
+   * @see baynes.kathleen.graphics.ImageViewRube#getItemName()
+   */
   @Override
   public String getItemName() {
 	  return "Tree";
