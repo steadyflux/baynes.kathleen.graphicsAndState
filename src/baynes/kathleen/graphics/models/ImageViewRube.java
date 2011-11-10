@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import baynes.kathleen.graphics.util.Event;
-import baynes.kathleen.graphics.util.State;
+import baynes.kathleen.graphics.util.RubeState;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -23,13 +23,13 @@ public class ImageViewRube extends ImageView implements RubeItem {
 	protected static final String TAG = "baynes.kathleen.graphics";
 	
 	/** The current state. */
-	protected State currentState;
+	protected RubeState currentState;
 	
 	/** The drawables, map state to image. */
-	protected Map<State, Drawable> drawables = new HashMap<State, Drawable>();
+	protected Map<RubeState, Drawable> drawables = new HashMap<RubeState, Drawable>();
 	
 	/** The transitions between states and the events that cause them. */
-	protected Map<State, Map<Event, State>> transitions = new HashMap<State, Map<Event, State>>();
+	protected Map<RubeState, Map<Event, RubeState>> transitions = new HashMap<RubeState, Map<Event, RubeState>>();
 
 	/**
 	 * Instantiates a new image view rube.
@@ -47,8 +47,8 @@ public class ImageViewRube extends ImageView implements RubeItem {
 	 * @param event the event
 	 * @param nextState the next state
 	 */
-	public void addTransition(State currentState, Event event, State nextState) {
-		Map<Event, State> transitionMap = (transitions.get(currentState) == null) ? new HashMap<Event, State>()
+	public void addTransition(RubeState currentState, Event event, RubeState nextState) {
+		Map<Event, RubeState> transitionMap = (transitions.get(currentState) == null) ? new HashMap<Event, RubeState>()
 		    : transitions.get(currentState);
 		transitionMap.put(event, nextState);
 		transitions.put(currentState, transitionMap);

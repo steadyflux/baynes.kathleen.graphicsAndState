@@ -1,12 +1,11 @@
 package baynes.kathleen.graphics;
 
 import baynes.kathleen.graphics.R;
-import baynes.kathleen.graphics.models.Monkey;
-import baynes.kathleen.graphics.models.Pinwheel;
 import baynes.kathleen.graphics.models.RubeItem;
-import baynes.kathleen.graphics.models.Tree;
+import baynes.kathleen.graphics.models.RubeItemFactory;
 import baynes.kathleen.graphics.util.Event;
 import android.app.Activity;
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +19,7 @@ import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class GraphicsAndStateActivity. Main activity for assignment
  */
@@ -29,7 +29,9 @@ public class GraphicsAndStateActivity extends Activity {
 	protected static final String TAG = "baynes.kathleen.graphics";
 	
 	/**
-	 * part of activity creation
+	 * part of activity creation.
+	 *
+	 * @param savedInstanceState the saved instance state
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	@Override
@@ -51,8 +53,9 @@ public class GraphicsAndStateActivity extends Activity {
 		setUpButton(R.id.electric_off_button, Event.ElectricOff);
 	}
 
+
 	/**
-	 * attachs an event to a button button.
+	 * attaches an event to a button button.
 	 *
 	 * @param button_id the button_id
 	 * @param associatedEvent the associated event
@@ -94,29 +97,31 @@ public class GraphicsAndStateActivity extends Activity {
 
 			@Override
       public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+				
+				Log.d(TAG,"Position selection: " + position);
 				CharSequence spinnerChoice = ((TextView)selectedItemView).getText();
 				Log.d(TAG, "spinner item selected: " + spinnerChoice);
 				
 				FrameLayout frame = ((FrameLayout)findViewById(R.id.frame));
 				clearFrame(frame);
 				
-				View toAdd = null;
+				View toAdd = RubeItemFactory.getRubeItemView(position, getBaseContext());
 				
-				if ("Clapping Monkey".contentEquals(spinnerChoice)) {
-					Log.d(TAG, "ooh a monkey!");
-					toAdd = new Monkey(getBaseContext());
-				}
-				else if ("Christmas Tree".contentEquals(spinnerChoice)) {
-					Log.d(TAG, "pretty tree ....");
-					toAdd = new Tree(getBaseContext());
-				}
-				else if ("Pinwheel".contentEquals(spinnerChoice)) {
-					Log.d(TAG, "pinwheel");
-					toAdd = new Pinwheel(getBaseContext());
-				}
-				else {
-					Log.d(TAG, "NOTHING! ABSOLUTELY NOTHING!");
-				}
+//				if ("Clapping Monkey".contentEquals(spinnerChoice)) {
+//					Log.d(TAG, "ooh a monkey!");
+//					toAdd = new Monkey(getBaseContext());
+//				}
+//				else if ("Christmas Tree".contentEquals(spinnerChoice)) {
+//					Log.d(TAG, "pretty tree ....");
+//					toAdd = new ChristmasTree(getBaseContext());
+//				}
+//				else if ("Pinwheel".contentEquals(spinnerChoice)) {
+//					Log.d(TAG, "pinwheel");
+//					toAdd = new Pinwheel(getBaseContext());
+//				}
+//				else {
+//					Log.d(TAG, "NOTHING! ABSOLUTELY NOTHING!");
+//				}
 
 				frame.addView(toAdd);
 				frame.invalidate();
@@ -132,7 +137,7 @@ public class GraphicsAndStateActivity extends Activity {
   }
 	
 	/**
-	 * Clear frame, clears any animations and removes all views from the frame 
+	 * Clear frame, clears any animations and removes all views from the frame.
 	 *
 	 * @param frame the frame to be cleared
 	 */

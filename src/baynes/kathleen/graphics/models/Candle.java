@@ -1,11 +1,52 @@
 package baynes.kathleen.graphics.models;
 
+import baynes.kathleen.graphics.R;
+import baynes.kathleen.graphics.util.Event;
+import baynes.kathleen.graphics.util.RubeState;
 import android.content.Context;
 
 public class Candle extends ImageViewRube {
 
-	public Candle(Context context) {
-	  super(context);
-  }
+	/**
+	 * Candle states
+	 */
+	private enum State implements RubeState {
+		Unlit, Burning
 
+	}
+
+	/**
+	 * Instantiates a new candle, setting up initial state, drawable hash and
+	 * state machine.
+	 * 
+	 * @param context
+	 *          the context
+	 */
+	public Candle(Context context) {
+		super(context);
+		currentState = State.Unlit;
+
+		drawables.put(State.Unlit, context.getResources().getDrawable(R.drawable.candle_unlit));
+		drawables.put(State.Burning, context.getResources().getDrawable(R.drawable.candle_burning));
+
+		addTransition(State.Unlit, Event.Heat, State.Burning);
+		addTransition(State.Unlit, Event.Start, State.Burning);
+
+		addTransition(State.Burning, Event.Heat, State.Burning);
+		addTransition(State.Burning, Event.Water, State.Unlit);
+
+		this.setScaleType(ScaleType.CENTER);
+		this.setImageResource(R.drawable.candle_unlit);
+	}
+
+	/**
+	 * returns "Candle".
+	 * 
+	 * @return the item name
+	 * @see baynes.kathleen.graphics.models.ImageViewRube#getItemName()
+	 */
+	@Override
+	public String getItemName() {
+		return "Candle";
+	}
 }

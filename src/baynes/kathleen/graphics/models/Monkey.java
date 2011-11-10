@@ -2,7 +2,7 @@ package baynes.kathleen.graphics.models;
 
 import baynes.kathleen.graphics.R;
 import baynes.kathleen.graphics.util.Event;
-import baynes.kathleen.graphics.util.State;
+import baynes.kathleen.graphics.util.RubeState;
 
 import android.content.Context;
 
@@ -11,6 +11,13 @@ import android.content.Context;
  */
 public class Monkey extends ImageViewRube {
 
+	
+	/**
+	 * Monkey states
+	 */
+	private enum State implements RubeState {
+		Wet, Burning, Bored, Ashes, ClappingWide, ClappingClosed, WetClappingWide, WetClappingClosed
+	}
 	/**
 	 * Instantiates a new monkey, setting up initial state, drawable hash and state machine.
 	 *
