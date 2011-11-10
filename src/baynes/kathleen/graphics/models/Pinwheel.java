@@ -1,4 +1,7 @@
-package baynes.kathleen.graphics;
+package baynes.kathleen.graphics.models;
+
+import baynes.kathleen.graphics.R;
+import baynes.kathleen.graphics.util.Event;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -106,7 +109,7 @@ public class Pinwheel extends View implements RubeItem {
 
 	/**
 	 * reacts to the Pulse and Steam events
-	 * @see baynes.kathleen.graphics.RubeItem#getNextStateView(baynes.kathleen.graphics.Event)
+	 * @see baynes.kathleen.graphics.models.RubeItem#getNextStateView(baynes.kathleen.graphics.util.Event)
 	 */
 	@Override
 	public View getNextStateView(Event event) {
@@ -124,7 +127,7 @@ public class Pinwheel extends View implements RubeItem {
 
 	/**
 	 * returns "Pinwheel"
-	 * @see baynes.kathleen.graphics.RubeItem#getItemName()
+	 * @see baynes.kathleen.graphics.models.RubeItem#getItemName()
 	 */
 	@Override
 	public String getItemName() {
@@ -133,7 +136,7 @@ public class Pinwheel extends View implements RubeItem {
 
 	/**
 	 * returns the current state
-	 * @see baynes.kathleen.graphics.RubeItem#getCurrentState()
+	 * @see baynes.kathleen.graphics.models.RubeItem#getCurrentState()
 	 */
 	@Override
   public CharSequence getCurrentState() {

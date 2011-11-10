@@ -1,5 +1,6 @@
-package baynes.kathleen.graphics;
+package baynes.kathleen.graphics.models;
 
+import baynes.kathleen.graphics.util.Event;
 import android.view.View;
 
 /**

@@ -1,4 +1,8 @@
-package baynes.kathleen.graphics;
+package baynes.kathleen.graphics.models;
+
+import baynes.kathleen.graphics.R;
+import baynes.kathleen.graphics.util.Event;
+import baynes.kathleen.graphics.util.State;
 
 import android.content.Context;
 
@@ -42,7 +46,7 @@ public class Tree extends ImageViewRube {
   
   /**
    * returns "Tree"
-   * @see baynes.kathleen.graphics.ImageViewRube#getItemName()
+   * @see baynes.kathleen.graphics.models.ImageViewRube#getItemName()
    */
   @Override
   public String getItemName() {

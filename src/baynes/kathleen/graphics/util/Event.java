@@ -1,4 +1,4 @@
-package baynes.kathleen.graphics;
+package baynes.kathleen.graphics.util;
 
 /**
  * The Enum Event.

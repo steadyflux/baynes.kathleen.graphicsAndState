@@ -1,6 +1,11 @@
 package baynes.kathleen.graphics;
 
 import baynes.kathleen.graphics.R;
+import baynes.kathleen.graphics.models.Monkey;
+import baynes.kathleen.graphics.models.Pinwheel;
+import baynes.kathleen.graphics.models.RubeItem;
+import baynes.kathleen.graphics.models.Tree;
+import baynes.kathleen.graphics.util.Event;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;

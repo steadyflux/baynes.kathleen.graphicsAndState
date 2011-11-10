@@ -1,7 +1,10 @@
-package baynes.kathleen.graphics;
+package baynes.kathleen.graphics.models;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import baynes.kathleen.graphics.util.Event;
+import baynes.kathleen.graphics.util.State;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -55,7 +58,7 @@ public class ImageViewRube extends ImageView implements RubeItem {
 	 * 
 	 *  returns the view to be drawn on the FrameLayout
 	 *  
-	 * @see baynes.kathleen.graphics.RubeItem#getNextStateView(baynes.kathleen.graphics.Event)
+	 * @see baynes.kathleen.graphics.models.RubeItem#getNextStateView(baynes.kathleen.graphics.util.Event)
 	 */
 	public View getNextStateView(Event event) {
 		Log.d(TAG, "getNextStateView: Total number of transitions for " + getItemName() + " = " + transitions.size());
@@ -81,7 +84,7 @@ public class ImageViewRube extends ImageView implements RubeItem {
 
 	/** 
 	 * returns the name of this item
-	 * @see baynes.kathleen.graphics.RubeItem#getItemName()
+	 * @see baynes.kathleen.graphics.models.RubeItem#getItemName()
 	 */
 	@Override
   public String getItemName() {
@@ -90,7 +93,7 @@ public class ImageViewRube extends ImageView implements RubeItem {
 
 	/**
 	 * returns the current state
-	 * @see baynes.kathleen.graphics.RubeItem#getCurrentState()
+	 * @see baynes.kathleen.graphics.models.RubeItem#getCurrentState()
 	 */
 	@Override
   public CharSequence getCurrentState() {
