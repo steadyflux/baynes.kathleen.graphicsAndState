@@ -19,7 +19,6 @@ import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class GraphicsAndStateActivity. Main activity for assignment
  */
@@ -106,22 +105,6 @@ public class GraphicsAndStateActivity extends Activity {
 				clearFrame(frame);
 				
 				View toAdd = RubeItemFactory.getRubeItemView(position, getBaseContext());
-				
-//				if ("Clapping Monkey".contentEquals(spinnerChoice)) {
-//					Log.d(TAG, "ooh a monkey!");
-//					toAdd = new Monkey(getBaseContext());
-//				}
-//				else if ("Christmas Tree".contentEquals(spinnerChoice)) {
-//					Log.d(TAG, "pretty tree ....");
-//					toAdd = new ChristmasTree(getBaseContext());
-//				}
-//				else if ("Pinwheel".contentEquals(spinnerChoice)) {
-//					Log.d(TAG, "pinwheel");
-//					toAdd = new Pinwheel(getBaseContext());
-//				}
-//				else {
-//					Log.d(TAG, "NOTHING! ABSOLUTELY NOTHING!");
-//				}
 
 				frame.addView(toAdd);
 				frame.invalidate();
