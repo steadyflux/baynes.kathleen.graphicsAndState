@@ -1,5 +1,8 @@
 package baynes.kathleen.graphics.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import baynes.kathleen.graphics.R;
 import baynes.kathleen.graphics.util.Event;
 import baynes.kathleen.graphics.util.RubeState;
@@ -37,4 +40,16 @@ public class Cleat extends ImageViewRube {
 	public String getItemName() {
 		return "Cleat";
 	}
+	
+	/**
+	 * 
+	 * returns events that this item responds to
+	 * @see baynes.kathleen.graphics.models.ImageViewRube#getEventsToProcess(android.content.Context)
+	 */
+	@Override
+  public Set<Event> getEventsToProcess(Context baseContext) {
+		Set<Event> eventsToProcess = new HashSet<Event>();
+		eventsToProcess.add(Event.Pulse);
+		return eventsToProcess;
+  }
 }

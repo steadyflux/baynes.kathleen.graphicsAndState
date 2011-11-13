@@ -2,6 +2,7 @@ package baynes.kathleen.graphics.models;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import baynes.kathleen.graphics.util.Event;
 import baynes.kathleen.graphics.util.RubeState;
@@ -13,7 +14,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ImageViewRube.
  */
@@ -99,4 +99,10 @@ public class ImageViewRube extends ImageView implements RubeItem {
   public CharSequence getCurrentState() {
 	  return currentState.toString();
   }
+
+	@Override
+  public Set<Event> getEventsToProcess(Context baseContext) {
+		return Event.getAllEvents();
+  }
+
 }

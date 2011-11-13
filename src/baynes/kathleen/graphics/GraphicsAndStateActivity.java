@@ -1,5 +1,7 @@
 package baynes.kathleen.graphics;
 
+import java.util.Set;
+
 import baynes.kathleen.graphics.R;
 import baynes.kathleen.graphics.models.RubeItem;
 import baynes.kathleen.graphics.models.RubeItemFactory;
@@ -16,6 +18,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -43,13 +46,6 @@ public class GraphicsAndStateActivity extends Activity {
 		
 		setupRubeSelector();
 
-		setUpButton(R.id.water_button, Event.Water);
-		setUpButton(R.id.heat_button, Event.Heat);
-		setUpButton(R.id.pulse_button, Event.Pulse);
-		setUpButton(R.id.steam_button, Event.Steam);
-		setUpButton(R.id.alex_button, Event.Alex);
-		setUpButton(R.id.electric_on_button, Event.ElectricOn);
-		setUpButton(R.id.electric_off_button, Event.ElectricOff);
 	}
 
 
@@ -59,8 +55,7 @@ public class GraphicsAndStateActivity extends Activity {
 	 * @param button_id the button_id
 	 * @param associatedEvent the associated event
 	 */
-	private void setUpButton(int button_id, final Event associatedEvent) {
-	  Button button = (Button) findViewById(button_id);
+	private void setUpButton(Button button, final Event associatedEvent) {
 	  button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -104,12 +99,33 @@ public class GraphicsAndStateActivity extends Activity {
 				FrameLayout frame = ((FrameLayout)findViewById(R.id.frame));
 				clearFrame(frame);
 				
-				View toAdd = RubeItemFactory.getRubeItemView(position, getBaseContext());
-
-				frame.addView(toAdd);
+				clearButtons();
+				
+				RubeItem toAdd = RubeItemFactory.getRubeItemView(position, getBaseContext());
+				Set<Event> events = toAdd.getEventsToProcess(getBaseContext());
+				
+				for (Event event : events) {
+					addButtonForEvent(event);
+				}
+				
+				frame.addView((View)toAdd);
 				frame.invalidate();
 				
 				((TextView) findViewById(R.id.current_state)).setText(((RubeItem) toAdd).getCurrentState());
+      }
+
+			private void addButtonForEvent(Event event) {
+				LinearLayout buttonBar = ((LinearLayout) findViewById(R.id.button_bar));
+	      Button button = new Button(getBaseContext());
+	      button.setText(event.getStringNameResource());
+	      setUpButton(button, event);
+	      buttonBar.addView(button);
+	      buttonBar.invalidate();
+      }
+
+			private void clearButtons() {
+	      LinearLayout buttonBar = ((LinearLayout) findViewById(R.id.button_bar));
+	      buttonBar.removeAllViews();
       }
 
 			@Override

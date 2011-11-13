@@ -1,16 +1,18 @@
 package baynes.kathleen.graphics.models;
 
-import baynes.kathleen.graphics.R;
+import java.util.HashSet;
+import java.util.Set;
+
 import baynes.kathleen.graphics.util.Event;
 import baynes.kathleen.graphics.util.RubeState;
 import android.content.Context;
 
-public class Rope extends ImageViewRube {
+public abstract class Rope extends ImageViewRube {
 
 	/**
 	 * Rope states
 	 */
-	private enum State implements RubeState {
+	protected enum State implements RubeState {
 		Slack, BurningSlack, Taut, BurningTaut, Ashes
 	}
 
@@ -18,10 +20,7 @@ public class Rope extends ImageViewRube {
 		super(context);
 		currentState = State.Slack;
 
-		drawables.put(State.Slack, context.getResources().getDrawable(R.drawable.rope_slack_up_right));
-		drawables.put(State.BurningSlack, context.getResources().getDrawable(R.drawable.rope_burning_slack_up_right));
-		drawables.put(State.Taut, context.getResources().getDrawable(R.drawable.rope_taut_up_right));
-		drawables.put(State.BurningTaut, context.getResources().getDrawable(R.drawable.rope_burning_taut_up_right));
+		setupImages(context);
 
 		addTransition(State.Slack, Event.Heat, State.BurningSlack);
 		addTransition(State.Slack, Event.Pull, State.Taut);
@@ -37,8 +36,9 @@ public class Rope extends ImageViewRube {
 		addTransition(State.BurningTaut, Event.Heat, State.Ashes);
 
 		this.setScaleType(ScaleType.CENTER);
-		this.setImageResource(R.drawable.rope_slack_up_right);
 	}
+
+	protected abstract void setupImages(Context context);
 
 	/**
 	 * returns "Rope".
@@ -50,5 +50,19 @@ public class Rope extends ImageViewRube {
 	public String getItemName() {
 		return "Rope";
 	}
-
+	
+	/**
+	 * 
+	 * returns events that this item responds to
+	 * @see baynes.kathleen.graphics.models.ImageViewRube#getEventsToProcess(android.content.Context)
+	 */
+	@Override
+  public Set<Event> getEventsToProcess(Context baseContext) {
+		Set<Event> eventsToProcess = new HashSet<Event>();
+		eventsToProcess.add(Event.Water);
+		eventsToProcess.add(Event.Heat);
+		eventsToProcess.add(Event.Release);
+		eventsToProcess.add(Event.Pull);
+		return eventsToProcess;
+  }
 }

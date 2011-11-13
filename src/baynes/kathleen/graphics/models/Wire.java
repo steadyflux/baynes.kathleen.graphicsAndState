@@ -1,16 +1,18 @@
 package baynes.kathleen.graphics.models;
 
-import baynes.kathleen.graphics.R;
+import java.util.HashSet;
+import java.util.Set;
+
 import baynes.kathleen.graphics.util.Event;
 import baynes.kathleen.graphics.util.RubeState;
 import android.content.Context;
 
-public class Wire extends ImageViewRube {
+public abstract class Wire extends ImageViewRube {
 
 	/**
 	 * Wire states
 	 */
-	private enum State implements RubeState {
+	protected enum State implements RubeState {
 	  NoCurrent, Wet, HasCurrent, Toasted, Shorted
 		
 	}
@@ -19,11 +21,7 @@ public class Wire extends ImageViewRube {
 	  super(context);
 	  currentState = State.NoCurrent;
 
-	  drawables.put(State.NoCurrent, context.getResources().getDrawable(R.drawable.wire_no_current_up_down));
-		drawables.put(State.Wet, context.getResources().getDrawable(R.drawable.wire_wet_up_down));
-		drawables.put(State.HasCurrent, context.getResources().getDrawable(R.drawable.wire_has_current_up_down));
-		drawables.put(State.Toasted, context.getResources().getDrawable(R.drawable.wire_toasted_up_down));
-		drawables.put(State.Shorted, context.getResources().getDrawable(R.drawable.wire_shorted_up_down));
+	  setupImages(context);
 		
 		addTransition(State.NoCurrent, Event.Water, State.Wet);
 		addTransition(State.NoCurrent, Event.ElectricOn, State.HasCurrent);
@@ -37,8 +35,10 @@ public class Wire extends ImageViewRube {
 		addTransition(State.Wet, Event.ElectricOn, State.Shorted);
 		
 		this.setScaleType(ScaleType.CENTER);
-		this.setImageResource(R.drawable.wire_no_current_up_down);
   }
+
+	
+	protected abstract void setupImages(Context context);
 
 	/**
 	 * returns "Wire".
@@ -50,4 +50,19 @@ public class Wire extends ImageViewRube {
 	public String getItemName() {
 		return "Wire";
 	}
+	
+	/**
+	 * 
+	 * returns events that this item responds to
+	 * @see baynes.kathleen.graphics.models.ImageViewRube#getEventsToProcess(android.content.Context)
+	 */
+	@Override
+  public Set<Event> getEventsToProcess(Context baseContext) {
+		Set<Event> eventsToProcess = new HashSet<Event>();
+		eventsToProcess.add(Event.ElectricOn);
+		eventsToProcess.add(Event.ElectricOff);
+		eventsToProcess.add(Event.Heat);
+		eventsToProcess.add(Event.Water);
+		return eventsToProcess;
+  }
 }

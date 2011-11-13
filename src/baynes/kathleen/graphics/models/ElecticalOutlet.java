@@ -1,5 +1,8 @@
 package baynes.kathleen.graphics.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import baynes.kathleen.graphics.R;
 import baynes.kathleen.graphics.util.Event;
 import baynes.kathleen.graphics.util.RubeState;
@@ -40,4 +43,18 @@ public class ElecticalOutlet extends ImageViewRube {
 	public String getItemName() {
 		return "ElecticalOutlet";
 	}
+	
+	/**
+	 * 
+	 * returns events that this item responds to
+	 * @see baynes.kathleen.graphics.models.ImageViewRube#getEventsToProcess(android.content.Context)
+	 */
+	@Override
+  public Set<Event> getEventsToProcess(Context baseContext) {
+		Set<Event> eventsToProcess = new HashSet<Event>();
+		eventsToProcess.add(Event.Heat);
+		eventsToProcess.add(Event.Water);
+		eventsToProcess.add(Event.Pulse);
+		return eventsToProcess;
+  }
 }

@@ -1,5 +1,8 @@
 package baynes.kathleen.graphics.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import baynes.kathleen.graphics.R;
 import baynes.kathleen.graphics.util.Event;
 
@@ -141,5 +144,18 @@ public class Pinwheel extends View implements RubeItem {
 	@Override
   public CharSequence getCurrentState() {
 		return stateName;
+  }
+	
+	/**
+	 * 
+	 * returns events that this item responds to
+	 * @see baynes.kathleen.graphics.models.ImageViewRube#getEventsToProcess(android.content.Context)
+	 */
+	@Override
+  public Set<Event> getEventsToProcess(Context baseContext) {
+		Set<Event> eventsToProcess = new HashSet<Event>();
+		eventsToProcess.add(Event.Pulse);
+		eventsToProcess.add(Event.Steam);
+		return eventsToProcess;
   }
 }

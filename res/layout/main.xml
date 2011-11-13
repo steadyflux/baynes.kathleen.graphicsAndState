@@ -7,58 +7,9 @@
 
     <LinearLayout
         android:id="@+id/button_bar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
-        
-        <Button
-            android:id="@+id/water_button"
-            android:layout_width="45sp"
-            android:layout_height="wrap_content"
-            android:text="@string/water"
-            android:textSize="8sp" />
-
-        <Button
-            android:id="@+id/heat_button"
-            android:layout_width="45sp"
-            android:layout_height="wrap_content"
-            android:text="@string/heat"
-            android:textSize="8sp" />
-
-        <Button
-            android:id="@+id/pulse_button"
-            android:layout_width="45sp"
-            android:layout_height="wrap_content"
-            android:text="@string/pulse"
-            android:textSize="8sp" />
-
-        <Button
-            android:id="@+id/electric_on_button"
-            android:layout_width="50sp"
-            android:layout_height="wrap_content"
-            android:text="@string/electric_on"
-            android:textSize="6sp" />
-
-        <Button
-            android:id="@+id/electric_off_button"
-            android:layout_width="50sp"
-            android:layout_height="wrap_content"
-            android:text="@string/electric_off"
-            android:textSize="6sp" />
-
-        <Button
-            android:id="@+id/alex_button"
-            android:layout_width="45sp"
-            android:layout_height="wrap_content"
-            android:text="@string/alex"
-            android:textSize="8sp" />
-
-        <Button
-            android:id="@+id/steam_button"
-            android:layout_width="45sp"
-            android:layout_height="wrap_content"
-            android:text="@string/steam"
-            android:textSize="8sp" />
 
     </LinearLayout>
 

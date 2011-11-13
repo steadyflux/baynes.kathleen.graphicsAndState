@@ -1,6 +1,9 @@
 package baynes.kathleen.graphics.models;
 
+import java.util.Set;
+
 import baynes.kathleen.graphics.util.Event;
+import android.content.Context;
 import android.view.View;
 
 /**
@@ -29,4 +32,6 @@ public interface RubeItem {
 	 * @return the next state view
 	 */
 	public View getNextStateView(Event event);
+
+	public Set<Event> getEventsToProcess(Context baseContext);
 }

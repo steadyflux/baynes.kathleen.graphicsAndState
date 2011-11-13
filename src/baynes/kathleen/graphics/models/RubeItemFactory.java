@@ -1,7 +1,6 @@
 package baynes.kathleen.graphics.models;
 
 import android.content.Context;
-import android.view.View;
 
 public class RubeItemFactory {
 
@@ -16,16 +15,20 @@ public class RubeItemFactory {
 	 * 4: Electrical Outlet
 	 * 5: Kettle
 	 * 6: Monkey
-	 * 7: Rope
-	 * 8: RubberBand
-	 * 9: TV
-	 * 10: Water Cooler
-	 * 11: Wire
+	 * 7: Rope Down Right
+	 * 8: Rope Left Right
+	 * 9: Rope Up Down
+	 * 10: Rope Up Right
+	 * 11: RubberBand
+	 * 12: TV
+	 * 13: Water Cooler
+	 * 14: Wire Left Right
+	 * 15: Wire Up Down
 	 * @param context 
 	 *
 	 * @return the rube item
 	 */
-	public static View getRubeItemView(int index, Context context) {
+	public static RubeItem getRubeItemView(int index, Context context) {
 		
 		switch (index) {
 		case 0:
@@ -43,15 +46,23 @@ public class RubeItemFactory {
 		case 6:
 			return new Monkey(context);
 		case 7:
-			return new Rope(context);
+			return new RopeDownRight(context);
 		case 8:
-			return new RubberBand(context);
+			return new RopeLeftRight(context);
 		case 9:
-			return new TV(context);
+			return new RopeUpDown(context);
 		case 10:
-			return new WaterCooler(context);
+			return new RopeUpRight(context);
 		case 11:
-			return new Wire(context);
+			return new RubberBand(context);
+		case 12:
+			return new TV(context);
+		case 13:
+			return new WaterCooler(context);
+		case 14:
+			return new WireLeftRight(context);
+		case 15:
+			return new WireUpDown(context);
 		}
 		return null;
   }

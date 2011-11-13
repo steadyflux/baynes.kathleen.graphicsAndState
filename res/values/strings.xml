@@ -6,10 +6,15 @@
     <string name="water">Water</string>
     <string name="heat">Heat</string>
     <string name="pulse">Pulse</string>
-    <string name="alex">Alex</string>
+    <string name="alex">Apex</string>
     <string name="steam">Steam</string>
     <string name="electric_on">Elect. On</string>
     <string name="electric_off">Elect. Off</string>
+    <string name="start">Start</string>
+    <string name="pull">Pull</string>
+    <string name="turn">Turn</string>
+    <string name="clap">Clap</string>
+    <string name="release">Release</string>
 
     <string-array name="sprite_list">
         <item>Candle</item>
@@ -19,11 +24,15 @@
         <item>Electrical Outlet</item>
         <item>Kettle</item>
         <item>Clapping Monkey</item>
-        <item>Rope</item>
+        <item>Rope (Down Right)</item>
+        <item>Rope (Left Right)</item>
+        <item>Rope (Up Down)</item>
+        <item>Rope (Up Right)</item>
         <item>Rubber Band</item>
         <item>TV</item>
         <item>Water Cooler</item>
-        <item>Wire</item>
+        <item>Wire (Left Right)</item>
+        <item>Wire (Up Down)</item>
     </string-array>
 
 </resources>

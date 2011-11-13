@@ -1,5 +1,8 @@
 package baynes.kathleen.graphics.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import baynes.kathleen.graphics.R;
 import baynes.kathleen.graphics.util.Event;
 import baynes.kathleen.graphics.util.RubeState;
@@ -51,6 +54,7 @@ public class ChristmasTree extends ImageViewRube {
 
 		addTransition(State.Burning, Event.Heat, State.Fried);
 		addTransition(State.Burning, Event.Water, State.Unlit);
+		addTransition(State.Burning, Event.Pulse, State.Fried);
 
 		addTransition(State.Unlit, Event.ElectricOn, State.Lit);
 		addTransition(State.Unlit, Event.Water, State.Wet);
@@ -74,4 +78,20 @@ public class ChristmasTree extends ImageViewRube {
 	public String getItemName() {
 		return "Tree";
 	}
+	
+	/**
+	 * 
+	 * returns events that this item responds to
+	 * @see baynes.kathleen.graphics.models.ImageViewRube#getEventsToProcess(android.content.Context)
+	 */
+	@Override
+  public Set<Event> getEventsToProcess(Context baseContext) {
+		Set<Event> eventsToProcess = new HashSet<Event>();
+		eventsToProcess.add(Event.ElectricOn);
+		eventsToProcess.add(Event.ElectricOff);
+		eventsToProcess.add(Event.Heat);
+		eventsToProcess.add(Event.Water);
+		eventsToProcess.add(Event.Pulse);
+		return eventsToProcess;
+  }	
 }
