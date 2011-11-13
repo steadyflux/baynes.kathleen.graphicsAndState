@@ -7,7 +7,7 @@ import android.content.Context;
 import android.view.View;
 
 /**
- * The Interface RubeItem, all views implement this to react to events
+ * The Interface RubeItem, all views implement this to react to events.
  */
 public interface RubeItem {
 	
@@ -33,5 +33,11 @@ public interface RubeItem {
 	 */
 	public View getNextStateView(Event event);
 
+	/**
+	 * Gets the events to process. This correlates to the buttons to be created on the screen
+	 *
+	 * @param baseContext the base context
+	 * @return the events to process
+	 */
 	public Set<Event> getEventsToProcess(Context baseContext);
 }

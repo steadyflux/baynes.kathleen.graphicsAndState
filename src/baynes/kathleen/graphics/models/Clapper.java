@@ -8,16 +8,34 @@ import baynes.kathleen.graphics.util.Event;
 import baynes.kathleen.graphics.util.RubeState;
 import android.content.Context;
 
+/**
+ * The Class Clapper.
+ */
 public class Clapper extends ImageViewRube {
 	
 	/**
-	 * Clapper states
+	 * Clapper states.
 	 */
 	private enum State implements RubeState {
-		PowerOff, SwitchOff, SwitchOn, Wet, Fried
+		
+		/** The Power off. */
+		PowerOff, 
+ /** The Switch off. */
+ SwitchOff, 
+ /** The Switch on. */
+ SwitchOn, 
+ /** The Wet. */
+ Wet, 
+ /** The Fried. */
+ Fried
 
 	}
 	
+	/**
+	 * Instantiates a new clapper.
+	 *
+	 * @param context the context
+	 */
 	public Clapper(Context context) {
 	  super(context);
 		currentState = State.PowerOff;
@@ -35,6 +53,7 @@ public class Clapper extends ImageViewRube {
 		addTransition(State.SwitchOff, Event.Water, State.Fried);
 		addTransition(State.SwitchOff, Event.Heat, State.Fried);
 		addTransition(State.SwitchOff, Event.Clap, State.SwitchOn);
+		addTransition(State.SwitchOff, Event.ElectricOff, State.PowerOff);
 		
 		addTransition(State.Wet, Event.Heat, State.PowerOff);
 		addTransition(State.Wet, Event.ElectricOn, State.Fried);
@@ -61,8 +80,10 @@ public class Clapper extends ImageViewRube {
 	}
 	
 	/**
-	 * 
-	 * returns events that this item responds to
+	 * returns events that this item responds to.
+	 *
+	 * @param baseContext the base context
+	 * @return the events to process
 	 * @see baynes.kathleen.graphics.models.ImageViewRube#getEventsToProcess(android.content.Context)
 	 */
 	@Override

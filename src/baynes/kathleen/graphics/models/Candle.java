@@ -8,13 +8,20 @@ import baynes.kathleen.graphics.util.Event;
 import baynes.kathleen.graphics.util.RubeState;
 import android.content.Context;
 
+/**
+ * The Class Candle.
+ */
 public class Candle extends ImageViewRube {
 
 	/**
-	 * Candle states
+	 * Candle states.
 	 */
 	private enum State implements RubeState {
-		Unlit, Burning
+
+		/** The Unlit. */
+		Unlit,
+		/** The Burning. */
+		Burning
 
 	}
 
@@ -52,19 +59,22 @@ public class Candle extends ImageViewRube {
 	public String getItemName() {
 		return "Candle";
 	}
-		
+
 	/**
+	 * returns events that this item responds to.
 	 * 
-	 * returns events that this item responds to
+	 * @param baseContext
+	 *          the base context
+	 * @return the events to process
 	 * @see baynes.kathleen.graphics.models.ImageViewRube#getEventsToProcess(android.content.Context)
 	 */
 	@Override
-  public Set<Event> getEventsToProcess(Context baseContext) {
+	public Set<Event> getEventsToProcess(Context baseContext) {
 		Set<Event> eventsToProcess = new HashSet<Event>();
 		eventsToProcess.add(Event.Start);
 		eventsToProcess.add(Event.Heat);
 		eventsToProcess.add(Event.Water);
 		eventsToProcess.add(Event.Pulse);
 		return eventsToProcess;
-  }
+	}
 }

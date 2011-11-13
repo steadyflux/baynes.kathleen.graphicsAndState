@@ -35,18 +35,35 @@ public enum Event {
 	/** The Release. */
 	Release(R.string.release);
 
+	/** The string name resource. */
 	private int stringNameResource;
-	
+
+	/**
+	 * Instantiates a new event.
+	 * 
+	 * @param stringNameResource
+	 *          the string name resource
+	 */
 	private Event(int stringNameResource) {
 		this.stringNameResource = stringNameResource;
 	}
-	
+
+	/**
+	 * Gets the all events.
+	 * 
+	 * @return the all events
+	 */
 	public static Set<Event> getAllEvents() {
 		return EnumSet.allOf(Event.class);
 	}
 
+	/**
+	 * Gets the string name resource, used for button text
+	 * 
+	 * @return the string name resource
+	 */
 	public int getStringNameResource() {
-	  return stringNameResource;
-  }
+		return stringNameResource;
+	}
 
 }

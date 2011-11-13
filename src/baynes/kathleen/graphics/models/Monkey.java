@@ -14,22 +14,40 @@ import android.content.Context;
  */
 public class Monkey extends ImageViewRube {
 
-	
 	/**
-	 * Monkey states
+	 * Monkey states.
 	 */
 	private enum State implements RubeState {
-		Wet, Burning, Bored, Ashes, ClappingWide, ClappingClosed, WetClappingWide, WetClappingClosed
+
+		/** The Wet. */
+		Wet,
+		/** The Burning. */
+		Burning,
+		/** The Bored. */
+		Bored,
+		/** The Ashes. */
+		Ashes,
+		/** The Clapping wide. */
+		ClappingWide,
+		/** The Clapping closed. */
+		ClappingClosed,
+		/** The Wet clapping wide. */
+		WetClappingWide,
+		/** The Wet clapping closed. */
+		WetClappingClosed
 	}
+
 	/**
-	 * Instantiates a new monkey, setting up initial state, drawable hash and state machine.
-	 *
-	 * @param context the context
+	 * Instantiates a new monkey, setting up initial state, drawable hash and
+	 * state machine.
+	 * 
+	 * @param context
+	 *          the context
 	 */
 	public Monkey(Context context) {
 		super(context);
 		currentState = State.Bored;
-		
+
 		drawables.put(State.Wet, context.getResources().getDrawable(R.drawable.monkey_wet));
 		drawables.put(State.Burning, context.getResources().getDrawable(R.drawable.monkey_burning));
 		drawables.put(State.Bored, context.getResources().getDrawable(R.drawable.monkey_bored));
@@ -42,51 +60,56 @@ public class Monkey extends ImageViewRube {
 		addTransition(State.Bored, Event.Alex, State.ClappingWide);
 		addTransition(State.Bored, Event.Water, State.Wet);
 		addTransition(State.Bored, Event.Heat, State.Burning);
-		
+
 		addTransition(State.Wet, Event.Alex, State.WetClappingWide);
 		addTransition(State.Wet, Event.Heat, State.Bored);
-		
+
 		addTransition(State.Burning, Event.Heat, State.Ashes);
 		addTransition(State.Burning, Event.Water, State.Bored);
-		
+
 		addTransition(State.ClappingWide, Event.Alex, State.ClappingClosed);
 		addTransition(State.ClappingWide, Event.Water, State.WetClappingWide);
 		addTransition(State.ClappingWide, Event.Heat, State.Burning);
-		
+
 		addTransition(State.ClappingClosed, Event.Alex, State.ClappingWide);
 		addTransition(State.ClappingClosed, Event.Water, State.WetClappingClosed);
 		addTransition(State.ClappingClosed, Event.Heat, State.Burning);
-		
+
 		addTransition(State.WetClappingClosed, Event.Alex, State.WetClappingWide);
 		addTransition(State.WetClappingClosed, Event.Heat, State.ClappingClosed);
-		
+
 		addTransition(State.WetClappingWide, Event.Alex, State.WetClappingClosed);
 		addTransition(State.WetClappingWide, Event.Heat, State.ClappingWide);
 
 		this.setScaleType(ScaleType.CENTER);
 		this.setImageResource(R.drawable.monkey_bored);
 	}
-	
+
 	/**
-	 * returns "Monkey"
+	 * returns "Monkey".
+	 * 
+	 * @return the item name
 	 * @see baynes.kathleen.graphics.models.ImageViewRube#getItemName()
 	 */
 	@Override
-  public String getItemName() {
-	  return "Monkey";
-  }
-	
+	public String getItemName() {
+		return "Monkey";
+	}
+
 	/**
+	 * returns events that this item responds to.
 	 * 
-	 * returns events that this item responds to
+	 * @param baseContext
+	 *          the base context
+	 * @return the events to process
 	 * @see baynes.kathleen.graphics.models.ImageViewRube#getEventsToProcess(android.content.Context)
 	 */
 	@Override
-  public Set<Event> getEventsToProcess(Context baseContext) {
+	public Set<Event> getEventsToProcess(Context baseContext) {
 		Set<Event> eventsToProcess = new HashSet<Event>();
 		eventsToProcess.add(Event.Alex);
 		eventsToProcess.add(Event.Heat);
 		eventsToProcess.add(Event.Water);
 		return eventsToProcess;
-  }
+	}
 }

@@ -8,28 +8,41 @@ import baynes.kathleen.graphics.util.Event;
 import baynes.kathleen.graphics.util.RubeState;
 import android.content.Context;
 
+/**
+ * The Class RubberBand.
+ */
 public class RubberBand extends ImageViewRube {
 
 	/**
-	 * RubberBand states
+	 * RubberBand states.
 	 */
 	private enum State implements RubeState {
-		Intact, Melted
+
+		/** The Intact. */
+		Intact,
+		/** The Melted. */
+		Melted
 	}
-	
+
+	/**
+	 * Instantiates a new rubber band.
+	 * 
+	 * @param context
+	 *          the context
+	 */
 	public RubberBand(Context context) {
-	  super(context);
-	  currentState = State.Intact;
+		super(context);
+		currentState = State.Intact;
 
 		drawables.put(State.Intact, context.getResources().getDrawable(R.drawable.rubberband_intact));
 		drawables.put(State.Melted, context.getResources().getDrawable(R.drawable.rubberband_melted));
-		
+
 		addTransition(State.Intact, Event.Turn, State.Intact);
 		addTransition(State.Intact, Event.Heat, State.Melted);
-		
+
 		this.setScaleType(ScaleType.CENTER);
 		this.setImageResource(R.drawable.rubberband_intact);
-  }
+	}
 
 	/**
 	 * returns "RubberBand".
@@ -43,15 +56,18 @@ public class RubberBand extends ImageViewRube {
 	}
 
 	/**
+	 * returns events that this item responds to.
 	 * 
-	 * returns events that this item responds to
+	 * @param baseContext
+	 *          the base context
+	 * @return the events to process
 	 * @see baynes.kathleen.graphics.models.ImageViewRube#getEventsToProcess(android.content.Context)
 	 */
 	@Override
-  public Set<Event> getEventsToProcess(Context baseContext) {
+	public Set<Event> getEventsToProcess(Context baseContext) {
 		Set<Event> eventsToProcess = new HashSet<Event>();
 		eventsToProcess.add(Event.Turn);
 		eventsToProcess.add(Event.Heat);
 		return eventsToProcess;
-  }
+	}
 }

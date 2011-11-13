@@ -8,15 +8,25 @@ import baynes.kathleen.graphics.util.Event;
 import baynes.kathleen.graphics.util.RubeState;
 import android.content.Context;
 
+/**
+ * The Class Cleat.
+ */
 public class Cleat extends ImageViewRube {
 
 	/**
-	 * Cleat states
+	 * Cleat states.
 	 */
 	private enum State implements RubeState {
+		
+		/** The Exists. */
 		Exists
 	}
 	
+	/**
+	 * Instantiates a new cleat.
+	 *
+	 * @param context the context
+	 */
 	public Cleat(Context context) {
 	  super(context);
 	  
@@ -42,8 +52,10 @@ public class Cleat extends ImageViewRube {
 	}
 	
 	/**
-	 * 
-	 * returns events that this item responds to
+	 * returns events that this item responds to.
+	 *
+	 * @param baseContext the base context
+	 * @return the events to process
 	 * @see baynes.kathleen.graphics.models.ImageViewRube#getEventsToProcess(android.content.Context)
 	 */
 	@Override

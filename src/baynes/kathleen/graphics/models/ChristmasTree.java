@@ -9,7 +9,6 @@ import baynes.kathleen.graphics.util.RubeState;
 
 import android.content.Context;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ChristmasTree.
  */
@@ -78,14 +77,17 @@ public class ChristmasTree extends ImageViewRube {
 	public String getItemName() {
 		return "Tree";
 	}
-	
+
 	/**
+	 * returns events that this item responds to.
 	 * 
-	 * returns events that this item responds to
+	 * @param baseContext
+	 *          the base context
+	 * @return the events to process
 	 * @see baynes.kathleen.graphics.models.ImageViewRube#getEventsToProcess(android.content.Context)
 	 */
 	@Override
-  public Set<Event> getEventsToProcess(Context baseContext) {
+	public Set<Event> getEventsToProcess(Context baseContext) {
 		Set<Event> eventsToProcess = new HashSet<Event>();
 		eventsToProcess.add(Event.ElectricOn);
 		eventsToProcess.add(Event.ElectricOff);
@@ -93,5 +95,5 @@ public class ChristmasTree extends ImageViewRube {
 		eventsToProcess.add(Event.Water);
 		eventsToProcess.add(Event.Pulse);
 		return eventsToProcess;
-  }	
+	}
 }

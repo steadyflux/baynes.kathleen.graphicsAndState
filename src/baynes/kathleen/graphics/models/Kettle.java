@@ -8,14 +8,29 @@ import baynes.kathleen.graphics.util.Event;
 import baynes.kathleen.graphics.util.RubeState;
 import android.content.Context;
 
+/**
+ * The Class Kettle.
+ */
 public class Kettle extends ImageViewRube {
+	
 	/**
-	 * Kettle states
+	 * Kettle states.
 	 */
 	private enum State implements RubeState {
-		Empty, Hot, Full
+		
+		/** The Empty. */
+		Empty, 
+ /** The Hot. */
+ Hot, 
+ /** The Full. */
+ Full
 	}
 	
+	/**
+	 * Instantiates a new kettle.
+	 *
+	 * @param context the context
+	 */
 	public Kettle(Context context) {
 	  super(context);
 	  currentState = State.Empty;
@@ -48,8 +63,10 @@ public class Kettle extends ImageViewRube {
 	}
 	
 	/**
-	 * 
-	 * returns events that this item responds to
+	 * returns events that this item responds to.
+	 *
+	 * @param baseContext the base context
+	 * @return the events to process
 	 * @see baynes.kathleen.graphics.models.ImageViewRube#getEventsToProcess(android.content.Context)
 	 */
 	@Override

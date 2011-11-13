@@ -55,9 +55,10 @@ public class ImageViewRube extends ImageView implements RubeItem {
 	}
 
 	/**
-	 * 
-	 *  returns the view to be drawn on the FrameLayout
-	 *  
+	 * returns the view to be drawn on the FrameLayout.
+	 *
+	 * @param event the event
+	 * @return the next state view
 	 * @see baynes.kathleen.graphics.models.RubeItem#getNextStateView(baynes.kathleen.graphics.util.Event)
 	 */
 	public View getNextStateView(Event event) {
@@ -72,7 +73,9 @@ public class ImageViewRube extends ImageView implements RubeItem {
 	}
   
 	/**
-	 * puts the image on the canvas
+	 * puts the image on the canvas.
+	 *
+	 * @param canvas the canvas
 	 * @see android.widget.ImageView#onDraw(android.graphics.Canvas)
 	 */
 	@Override protected void onDraw(Canvas canvas) {
@@ -82,8 +85,10 @@ public class ImageViewRube extends ImageView implements RubeItem {
 		super.onDraw(canvas);
 	}
 
-	/** 
-	 * returns the name of this item
+	/**
+	 * returns the name of this item.
+	 *
+	 * @return the item name
 	 * @see baynes.kathleen.graphics.models.RubeItem#getItemName()
 	 */
 	@Override
@@ -92,7 +97,9 @@ public class ImageViewRube extends ImageView implements RubeItem {
   }
 
 	/**
-	 * returns the current state
+	 * returns the current state.
+	 *
+	 * @return the current state
 	 * @see baynes.kathleen.graphics.models.RubeItem#getCurrentState()
 	 */
 	@Override
@@ -100,6 +107,10 @@ public class ImageViewRube extends ImageView implements RubeItem {
 	  return currentState.toString();
   }
 
+	/**
+	 * returns all events ... this shouldnt happen
+	 * @see baynes.kathleen.graphics.models.RubeItem#getEventsToProcess(android.content.Context)
+	 */
 	@Override
   public Set<Event> getEventsToProcess(Context baseContext) {
 		return Event.getAllEvents();

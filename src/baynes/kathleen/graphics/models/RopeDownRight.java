@@ -3,12 +3,24 @@ package baynes.kathleen.graphics.models;
 import baynes.kathleen.graphics.R;
 import android.content.Context;
 
+/**
+ * The Class RopeDownRight.
+ */
 public class RopeDownRight extends Rope {
 
+	/**
+	 * Instantiates a new rope down right.
+	 *
+	 * @param context the context
+	 */
 	public RopeDownRight(Context context) {
 		super(context);
 	}
 
+	/**
+	 * sets up images for this rope subclass
+	 * @see baynes.kathleen.graphics.models.Rope#setupImages(android.content.Context)
+	 */
 	@Override
   protected void setupImages(Context context) {
 		drawables.put(State.Slack, context.getResources().getDrawable(R.drawable.rope_slack_down_right));

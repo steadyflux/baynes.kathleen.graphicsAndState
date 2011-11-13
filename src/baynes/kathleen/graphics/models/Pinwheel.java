@@ -38,7 +38,7 @@ public class Pinwheel extends View implements RubeItem {
 	private String stateName = "Not Spinning";
 
 	/**
-	 * Instantiates a new pinwheel
+	 * Instantiates a new pinwheel.
 	 *
 	 * @param context the context
 	 */
@@ -85,7 +85,9 @@ public class Pinwheel extends View implements RubeItem {
 	}
 
 	/**
-	 * puts the image on the canvas
+	 * puts the image on the canvas.
+	 *
+	 * @param canvas the canvas
 	 * @see android.view.View#onDraw(android.graphics.Canvas)
 	 */
 	@Override
@@ -111,7 +113,10 @@ public class Pinwheel extends View implements RubeItem {
 	}
 
 	/**
-	 * reacts to the Pulse and Steam events
+	 * reacts to the Pulse and Steam events.
+	 *
+	 * @param event the event
+	 * @return the next state view
 	 * @see baynes.kathleen.graphics.models.RubeItem#getNextStateView(baynes.kathleen.graphics.util.Event)
 	 */
 	@Override
@@ -129,7 +134,9 @@ public class Pinwheel extends View implements RubeItem {
 	}
 
 	/**
-	 * returns "Pinwheel"
+	 * returns "Pinwheel".
+	 *
+	 * @return the item name
 	 * @see baynes.kathleen.graphics.models.RubeItem#getItemName()
 	 */
 	@Override
@@ -138,7 +145,9 @@ public class Pinwheel extends View implements RubeItem {
 	}
 
 	/**
-	 * returns the current state
+	 * returns the current state.
+	 *
+	 * @return the current state
 	 * @see baynes.kathleen.graphics.models.RubeItem#getCurrentState()
 	 */
 	@Override
@@ -147,8 +156,10 @@ public class Pinwheel extends View implements RubeItem {
   }
 	
 	/**
-	 * 
-	 * returns events that this item responds to
+	 * returns events that this item responds to.
+	 *
+	 * @param baseContext the base context
+	 * @return the events to process
 	 * @see baynes.kathleen.graphics.models.ImageViewRube#getEventsToProcess(android.content.Context)
 	 */
 	@Override

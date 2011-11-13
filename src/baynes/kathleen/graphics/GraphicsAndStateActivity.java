@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -52,7 +53,7 @@ public class GraphicsAndStateActivity extends Activity {
 	/**
 	 * attaches an event to a button button.
 	 *
-	 * @param button_id the button_id
+	 * @param button the button
 	 * @param associatedEvent the associated event
 	 */
 	private void setUpButton(Button button, final Event associatedEvent) {
@@ -118,6 +119,7 @@ public class GraphicsAndStateActivity extends Activity {
 				LinearLayout buttonBar = ((LinearLayout) findViewById(R.id.button_bar));
 	      Button button = new Button(getBaseContext());
 	      button.setText(event.getStringNameResource());
+	      button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 	      setUpButton(button, event);
 	      buttonBar.addView(button);
 	      buttonBar.invalidate();

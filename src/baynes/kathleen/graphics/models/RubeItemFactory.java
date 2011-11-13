@@ -2,13 +2,16 @@ package baynes.kathleen.graphics.models;
 
 import android.content.Context;
 
+/**
+ * A factory for creating RubeItem objects.
+ */
 public class RubeItemFactory {
 
 	/**
 	 * Gets the rube item.
 	 * 
 	 * Expected List Order:
- 	 * 0: Candle
+	 * 0: Candle
 	 * 1: Christmas Tree
 	 * 2: Clapper
 	 * 3: Cleat
@@ -24,8 +27,10 @@ public class RubeItemFactory {
 	 * 13: Water Cooler
 	 * 14: Wire Left Right
 	 * 15: Wire Up Down
-	 * @param context 
+	 * 16: Pinwheel
 	 *
+	 * @param index the index
+	 * @param context the context
 	 * @return the rube item
 	 */
 	public static RubeItem getRubeItemView(int index, Context context) {
@@ -63,6 +68,8 @@ public class RubeItemFactory {
 			return new WireLeftRight(context);
 		case 15:
 			return new WireUpDown(context);
+		case 16:
+			return new Pinwheel(context);
 		}
 		return null;
   }
